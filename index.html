@@ -333,29 +333,87 @@ section { padding: 8rem 3rem; }
   margin-bottom: 1.5rem;
 }
 .about-text p strong { color: var(--text); font-weight: 600; }
-.about-stats {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  padding-top: 1rem;
+.about-currently {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding-top: 0.5rem;
 }
-.stat {
+.currently-item {
   padding: 1.5rem 0;
   border-top: 1px solid var(--border);
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.7s var(--ease-out-expo), transform 0.7s var(--ease-out-expo);
 }
-.stat-number {
-  font-family: var(--serif);
-  font-size: 3rem;
-  letter-spacing: -0.02em;
-  line-height: 1;
-  margin-bottom: 0.5rem;
+.currently-item.visible {
+  opacity: 1;
+  transform: translateX(0);
 }
-.stat-label {
-  font-size: 0.8rem;
-  color: var(--text-tertiary);
+.currently-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--bg-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 1.1rem;
+  transition: background 0.4s var(--ease-out-expo), transform 0.4s var(--ease-out-expo);
+}
+.currently-item:hover .currently-icon {
+  background: var(--text);
+  transform: scale(1.1) rotate(-5deg);
+}
+.currently-item:hover .currently-icon svg { stroke: var(--bg); }
+.currently-icon svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--text);
+  transition: stroke 0.4s;
+}
+.currently-content { flex: 1; }
+.currently-label {
+  font-size: 0.7rem;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.15em;
+  color: var(--text-tertiary);
+  margin-bottom: 0.3rem;
+}
+.currently-value {
+  font-size: 1.05rem;
   font-weight: 500;
+  color: var(--text);
+  line-height: 1.5;
+}
+.currently-value a {
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--border);
+  transition: text-decoration-color 0.3s;
+}
+.currently-value a:hover {
+  text-decoration-color: var(--text);
+}
+.status-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  background: #34c759;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.3); }
 }
 
 /* ===== EXPERIENCE TIMELINE ===== */
@@ -856,23 +914,48 @@ footer p {
       <p>I'm a <strong>backend-focused software engineer</strong> with a passion for designing clean, scalable systems that just work. Currently pursuing my M.S. in Computer Science at <strong>Northeastern University's Khoury College</strong>, I bring hands-on experience building production-grade platforms from the ground up.</p>
       <p>From architecting polyglot persistence strategies with four different databases to implementing defense-in-depth permission systems, I thrive on solving complex engineering problems with elegant solutions. I believe great software is invisible — users should never have to think about the engineering behind it.</p>
     </div>
-    <div class="about-stats reveal-right">
-      <div class="stat">
-        <div class="stat-number"><span class="counter" data-target="75">0</span>+</div>
-        <div class="stat-label">API Endpoints Built</div>
+    <div class="about-currently reveal-right">
+
+      <div class="currently-item">
+        <div class="currently-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.657 2.686 3 6 3s6-1.343 6-3v-5"/></svg>
+        </div>
+        <div class="currently-content">
+          <div class="currently-label">Studying</div>
+          <div class="currently-value">M.S. Computer Science at Northeastern University</div>
+        </div>
       </div>
-      <div class="stat">
-        <div class="stat-number"><span class="counter" data-target="177">0</span>+</div>
-        <div class="stat-label">Tests Written</div>
+
+      <div class="currently-item">
+        <div class="currently-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <div class="currently-content">
+          <div class="currently-label">Building</div>
+          <div class="currently-value">Backend systems at NU Launch Labs with Django & PostgreSQL</div>
+        </div>
       </div>
-      <div class="stat">
-        <div class="stat-number"><span class="counter" data-target="5">0</span></div>
-        <div class="stat-label">Databases Mastered</div>
+
+      <div class="currently-item">
+        <div class="currently-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="currently-content">
+          <div class="currently-label">Exploring</div>
+          <div class="currently-value">Distributed systems, enterprise architecture & open-source contributions</div>
+        </div>
       </div>
-      <div class="stat">
-        <div class="stat-number"><span class="counter" data-target="3">0</span>.7</div>
-        <div class="stat-label">GPA at Northeastern</div>
+
+      <div class="currently-item">
+        <div class="currently-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+        </div>
+        <div class="currently-content">
+          <div class="currently-label">Status</div>
+          <div class="currently-value"><span class="status-dot"></span>Open to co-op & internship opportunities</div>
+        </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -1257,31 +1340,24 @@ window.addEventListener('scroll', () => {
   });
 });
 
-// ===== COUNTER ANIMATION =====
-const counters = document.querySelectorAll('.counter');
-const counterObserver = new IntersectionObserver((entries) => {
+// ===== CURRENTLY ITEMS STAGGERED REVEAL =====
+const currentlyItems = document.querySelectorAll('.currently-item');
+const currentlyObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      const el = entry.target;
-      const target = parseInt(el.dataset.target);
-      const duration = 1500;
-      const start = performance.now();
-
-      function updateCounter(now) {
-        const elapsed = now - start;
-        const progress = Math.min(elapsed / duration, 1);
-        // Ease out quint
-        const eased = 1 - Math.pow(1 - progress, 5);
-        el.textContent = Math.round(target * eased);
-        if (progress < 1) requestAnimationFrame(updateCounter);
-      }
-      requestAnimationFrame(updateCounter);
-      counterObserver.unobserve(el);
+      currentlyItems.forEach((item, i) => {
+        setTimeout(() => {
+          item.classList.add('visible');
+        }, i * 180);
+      });
+      currentlyObserver.unobserve(entry.target);
     }
   });
-}, { threshold: 0.5 });
+}, { threshold: 0.2 });
 
-counters.forEach(c => counterObserver.observe(c));
+if (currentlyItems.length > 0) {
+  currentlyObserver.observe(currentlyItems[0].parentElement);
+}
 
 // ===== SMOOTH ANCHOR SCROLL =====
 document.querySelectorAll('a[href^="#"]').forEach(a => {
