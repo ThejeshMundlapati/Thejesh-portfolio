@@ -201,7 +201,7 @@ nav.hidden { transform: translateY(-100%); }
 .hero-sub {
   font-size: clamp(1rem, 1.5vw, 1.2rem);
   color: var(--text-secondary);
-  max-width: 520px;
+  max-width: 540px;
   line-height: 1.7;
   font-weight: 400;
   opacity: 0;
@@ -391,16 +391,6 @@ section { padding: 8rem 3rem; }
   color: var(--text);
   line-height: 1.5;
 }
-.currently-value a {
-  color: var(--text);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  text-decoration-color: var(--border);
-  transition: text-decoration-color 0.3s;
-}
-.currently-value a:hover {
-  text-decoration-color: var(--text);
-}
 .status-dot {
   display: inline-block;
   width: 7px;
@@ -439,6 +429,7 @@ section { padding: 8rem 3rem; }
   position: relative;
   padding-bottom: 4rem;
 }
+.timeline-item:last-child { padding-bottom: 0; }
 .timeline-item::before {
   content: '';
   position: absolute;
@@ -779,7 +770,7 @@ footer p {
 .marquee-track {
   display: flex;
   gap: 3rem;
-  animation: marquee 25s linear infinite;
+  animation: marquee 30s linear infinite;
   width: max-content;
 }
 .marquee-item {
@@ -804,9 +795,6 @@ footer p {
 @keyframes marquee {
   to { transform: translateX(-50%); }
 }
-
-/* ===== COUNTER ANIMATION ===== */
-.counter { display: inline-block; }
 
 /* ===== SMOOTH PARALLAX ===== */
 .parallax-slow { transition: transform 0.1s linear; }
@@ -871,7 +859,7 @@ footer p {
     <span class="line"><span>Thejesh</span></span>
     <span class="line"><span>Mundlapati</span></span>
   </h1>
-  <p class="hero-sub">Software engineer crafting robust backend systems and full-stack applications. M.S. Computer Science at Northeastern University.</p>
+  <p class="hero-sub">Software engineer building distributed systems and full-stack platforms. M.S. Computer Science at Northeastern University, with hands-on experience in microservices, cloud, and event-driven architecture.</p>
   <div class="hero-cta">
     <a href="#projects" class="cta-primary magnetic">View My Work</a>
     <a href="#contact" class="cta-secondary magnetic">Get In Touch</a>
@@ -885,23 +873,27 @@ footer p {
     <span class="marquee-item">Spring Boot</span><span class="marquee-dot"></span>
     <span class="marquee-item">Django</span><span class="marquee-dot"></span>
     <span class="marquee-item">React</span><span class="marquee-dot"></span>
+    <span class="marquee-item">Kafka</span><span class="marquee-dot"></span>
+    <span class="marquee-item">AWS</span><span class="marquee-dot"></span>
     <span class="marquee-item">PostgreSQL</span><span class="marquee-dot"></span>
     <span class="marquee-item">MongoDB</span><span class="marquee-dot"></span>
     <span class="marquee-item">Redis</span><span class="marquee-dot"></span>
-    <span class="marquee-item">Elasticsearch</span><span class="marquee-dot"></span>
     <span class="marquee-item">Docker</span><span class="marquee-dot"></span>
-    <span class="marquee-item">REST APIs</span><span class="marquee-dot"></span>
+    <span class="marquee-item">Microservices</span><span class="marquee-dot"></span>
+    <span class="marquee-item">Elasticsearch</span><span class="marquee-dot"></span>
     <!-- Duplicate for seamless loop -->
     <span class="marquee-item">Java</span><span class="marquee-dot"></span>
     <span class="marquee-item">Spring Boot</span><span class="marquee-dot"></span>
     <span class="marquee-item">Django</span><span class="marquee-dot"></span>
     <span class="marquee-item">React</span><span class="marquee-dot"></span>
+    <span class="marquee-item">Kafka</span><span class="marquee-dot"></span>
+    <span class="marquee-item">AWS</span><span class="marquee-dot"></span>
     <span class="marquee-item">PostgreSQL</span><span class="marquee-dot"></span>
     <span class="marquee-item">MongoDB</span><span class="marquee-dot"></span>
     <span class="marquee-item">Redis</span><span class="marquee-dot"></span>
-    <span class="marquee-item">Elasticsearch</span><span class="marquee-dot"></span>
     <span class="marquee-item">Docker</span><span class="marquee-dot"></span>
-    <span class="marquee-item">REST APIs</span><span class="marquee-dot"></span>
+    <span class="marquee-item">Microservices</span><span class="marquee-dot"></span>
+    <span class="marquee-item">Elasticsearch</span><span class="marquee-dot"></span>
   </div>
 </div>
 
@@ -911,11 +903,10 @@ footer p {
   <h2 class="section-title reveal">About Me</h2>
   <div class="about-grid">
     <div class="about-text reveal-left">
-      <p>I'm a <strong>backend-focused software engineer</strong> with a passion for designing clean, scalable systems that just work. Currently pursuing my M.S. in Computer Science at <strong>Northeastern University's Khoury College</strong>, I bring hands-on experience building production-grade platforms from the ground up.</p>
-      <p>From architecting polyglot persistence strategies with four different databases to implementing defense-in-depth permission systems, I thrive on solving complex engineering problems with elegant solutions. I believe great software is invisible — users should never have to think about the engineering behind it.</p>
+      <p>I'm a <strong>backend-focused software engineer</strong> who designs distributed systems, microservice architectures, and cloud-native platforms. Currently pursuing my M.S. in Computer Science at <strong>Northeastern University's Khoury College</strong>, I bring hands-on experience shipping production code end to end.</p>
+      <p>From decomposing monoliths into event-driven microservices with Kafka and Spring Cloud, to building serverless scanning pipelines on AWS, I thrive on solving complex distributed problems. I believe great software is invisible — users should never have to think about the engineering behind it.</p>
     </div>
     <div class="about-currently reveal-right">
-
       <div class="currently-item">
         <div class="currently-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.657 2.686 3 6 3s6-1.343 6-3v-5"/></svg>
@@ -925,37 +916,33 @@ footer p {
           <div class="currently-value">M.S. Computer Science at Northeastern University</div>
         </div>
       </div>
-
       <div class="currently-item">
         <div class="currently-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
         </div>
         <div class="currently-content">
           <div class="currently-label">Building</div>
-          <div class="currently-value">Backend systems at NU Launch Labs with Django & PostgreSQL</div>
+          <div class="currently-value">Distributed microservices, serverless platforms & cloud-native systems</div>
         </div>
       </div>
-
       <div class="currently-item">
         <div class="currently-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
         </div>
         <div class="currently-content">
           <div class="currently-label">Exploring</div>
-          <div class="currently-value">Distributed systems, enterprise architecture & open-source contributions</div>
+          <div class="currently-value">Event-driven architecture, AWS, and AI-augmented development</div>
         </div>
       </div>
-
       <div class="currently-item">
         <div class="currently-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
         </div>
         <div class="currently-content">
           <div class="currently-label">Status</div>
-          <div class="currently-value"><span class="status-dot"></span>Open to co-op & internship opportunities</div>
+          <div class="currently-value"><span class="status-dot"></span>Open to co-op &amp; internship opportunities</div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -969,26 +956,28 @@ footer p {
       <div class="timeline-role">Backend Software Developer</div>
       <div class="timeline-company">NU Launch Labs — Northeastern University</div>
       <div class="timeline-date">Jan 2026 — Apr 2026 · Boston, MA</div>
-      <p class="timeline-desc">Sole backend developer building a centralized platform managing semester-long application cycles across two concurrent tracks. Architected defense-in-depth permission enforcement at three levels, designed 30+ REST API endpoints with JWT auth and role-based access for 4 user roles, and wrote 177+ automated tests with full audit logging.</p>
+      <p class="timeline-desc">Shipped web features end to end as the sole backend developer on a live platform — owning design through API development, testing, and delivery. Architected role-based access control for 4 user roles, built 20+ production REST API endpoints with JWT auth, designed a normalized PostgreSQL schema with 10+ relational models, and used AI coding tools daily to accelerate development while maintaining code quality through rigorous review.</p>
       <div class="timeline-highlights">
+        <span class="timeline-tag">Python</span>
         <span class="timeline-tag">Django</span>
         <span class="timeline-tag">DRF</span>
         <span class="timeline-tag">PostgreSQL</span>
         <span class="timeline-tag">JWT</span>
         <span class="timeline-tag">pytest</span>
-        <span class="timeline-tag">Docker</span>
+        <span class="timeline-tag">Claude Code</span>
         <span class="timeline-tag">Swagger</span>
       </div>
     </div>
     <div class="timeline-item reveal">
       <div class="timeline-role">Machine Learning Intern</div>
       <div class="timeline-company">Aqmenz Automation Private Limited</div>
-      <div class="timeline-date">Bangalore, India</div>
-      <p class="timeline-desc">Built modular Python pipelines for data preprocessing, feature engineering, and model evaluation on a housing dataset of 13,000+ records. Achieved 84.8% R² accuracy using Random Forest with automated hyperparameter tuning via GridSearchCV.</p>
+      <div class="timeline-date">May 2024 — Jul 2024 · Bangalore, India</div>
+      <p class="timeline-desc">Built modular Python pipelines for data preprocessing, feature engineering, and model evaluation on a housing dataset of 13,000+ records. Achieved 84.8% R² accuracy using Random Forest with automated hyperparameter tuning via GridSearchCV. Documented the experimentation approach in a runbook for reproducibility and presented findings to senior engineering staff.</p>
       <div class="timeline-highlights">
         <span class="timeline-tag">Python</span>
         <span class="timeline-tag">Scikit-learn</span>
         <span class="timeline-tag">Pandas</span>
+        <span class="timeline-tag">NumPy</span>
         <span class="timeline-tag">Random Forest</span>
         <span class="timeline-tag">GridSearchCV</span>
       </div>
@@ -1009,11 +998,14 @@ footer p {
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
       </a>
     </div>
-    <p class="project-desc">A production-grade full-stack e-commerce platform with polyglot persistence — PostgreSQL for transactions, MongoDB for product catalog, Redis for cart/wishlist caching, and Elasticsearch for full-text search with autocomplete. Features 75+ REST endpoints, Stripe payment integration with webhook handling, async email notifications, a full admin dashboard with analytics, and Docker multi-stage builds with CI/CD via GitHub Actions.</p>
+    <p class="project-desc">A full-stack distributed e-commerce platform decomposed into 7 independently deployable Spring Boot microservices with polyglot persistence — PostgreSQL, MongoDB, Redis, and Elasticsearch. Features Spring Cloud Gateway with Eureka service discovery, Apache Kafka event-driven saga pattern for distributed order transactions, Stripe payment integration with webhook handling, 75+ REST endpoints, a React/Redux admin dashboard, and Docker multi-stage builds with GitHub Actions CI/CD.</p>
     <div class="project-tech">
       <span class="tech-tag">Java</span>
       <span class="tech-tag">Spring Boot</span>
+      <span class="tech-tag">Spring Cloud</span>
+      <span class="tech-tag">Apache Kafka</span>
       <span class="tech-tag">React</span>
+      <span class="tech-tag">Redux Toolkit</span>
       <span class="tech-tag">PostgreSQL</span>
       <span class="tech-tag">MongoDB</span>
       <span class="tech-tag">Redis</span>
@@ -1021,6 +1013,30 @@ footer p {
       <span class="tech-tag">Stripe API</span>
       <span class="tech-tag">Docker</span>
       <span class="tech-tag">CI/CD</span>
+    </div>
+  </div>
+
+  <div class="project-card reveal-scale">
+    <div class="project-header">
+      <div class="project-name">MicroGuard</div>
+      <a href="https://github.com/ThejeshMundlapati" target="_blank" rel="noopener" class="project-link magnetic">
+        GitHub
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+      </a>
+    </div>
+    <p class="project-desc">A serverless microservices security dashboard that lets developers isolate and scan individual services instead of running monolithic scans. React frontend triggers scans via API Gateway, a Node.js Lambda orchestrator spins up Docker containers on ECS Fargate for SAST and penetration testing, with results persisted in DynamoDB and full JSON vulnerability reports stored in S3. Configured VPC networking with least-privilege IAM roles.</p>
+    <div class="project-tech">
+      <span class="tech-tag">React</span>
+      <span class="tech-tag">Node.js</span>
+      <span class="tech-tag">AWS Lambda</span>
+      <span class="tech-tag">API Gateway</span>
+      <span class="tech-tag">ECS Fargate</span>
+      <span class="tech-tag">DynamoDB</span>
+      <span class="tech-tag">S3</span>
+      <span class="tech-tag">ECR</span>
+      <span class="tech-tag">Docker</span>
+      <span class="tech-tag">IAM</span>
+      <span class="tech-tag">VPC</span>
     </div>
   </div>
 
@@ -1038,6 +1054,7 @@ footer p {
       <span class="tech-tag">Servlets</span>
       <span class="tech-tag">JDBC</span>
       <span class="tech-tag">MySQL</span>
+      <span class="tech-tag">JSP</span>
       <span class="tech-tag">MVC</span>
     </div>
   </div>
@@ -1062,17 +1079,18 @@ footer p {
 
   <div class="project-card reveal-scale">
     <div class="project-header">
-      <div class="project-name">Face Detection & Recognition</div>
+      <div class="project-name">Face Detection &amp; Recognition</div>
       <a href="https://github.com/ThejeshMundlapati" target="_blank" rel="noopener" class="project-link magnetic">
         GitHub
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
       </a>
     </div>
-    <p class="project-desc">A real-time face detection and recognition system with a modular image processing pipeline — grayscale conversion, Haar Cascade detection, face cropping, and LBPH model training. Designed as a foundation for automated online exam proctoring.</p>
+    <p class="project-desc">A real-time face detection and recognition system with a modular image processing pipeline — grayscale conversion, Haar Cascade detection, face cropping, and LBPH model training. Tuned detection parameters for accuracy/speed trade-offs across lighting conditions. Designed as a foundation for automated online exam proctoring.</p>
     <div class="project-tech">
       <span class="tech-tag">Python</span>
       <span class="tech-tag">OpenCV</span>
       <span class="tech-tag">NumPy</span>
+      <span class="tech-tag">Haar Cascades</span>
       <span class="tech-tag">LBPH</span>
     </div>
   </div>
@@ -1081,29 +1099,60 @@ footer p {
 <!-- Skills -->
 <section id="skills" class="skills">
   <p class="section-label reveal">Capabilities</p>
-  <h2 class="section-title reveal">Skills & Tools</h2>
+  <h2 class="section-title reveal">Skills &amp; Tools</h2>
   <div class="skills-grid">
     <div class="skill-group reveal">
       <div class="skill-group-title">Languages</div>
       <div class="skill-items">
         <span class="skill-item">Java</span>
         <span class="skill-item">Python</span>
+        <span class="skill-item">JavaScript</span>
+        <span class="skill-item">TypeScript</span>
         <span class="skill-item">C++</span>
         <span class="skill-item">C</span>
-        <span class="skill-item">JavaScript</span>
         <span class="skill-item">SQL</span>
+        <span class="skill-item">Bash</span>
       </div>
     </div>
     <div class="skill-group reveal">
-      <div class="skill-group-title">Backend & Frameworks</div>
+      <div class="skill-group-title">Backend &amp; Frameworks</div>
       <div class="skill-items">
         <span class="skill-item">Spring Boot</span>
+        <span class="skill-item">Spring Cloud Gateway</span>
+        <span class="skill-item">Spring Security</span>
         <span class="skill-item">Django</span>
         <span class="skill-item">Django REST Framework</span>
-        <span class="skill-item">Spring Security</span>
-        <span class="skill-item">Spring MVC</span>
-        <span class="skill-item">JWT Auth</span>
+        <span class="skill-item">Node.js</span>
         <span class="skill-item">REST APIs</span>
+        <span class="skill-item">JWT Auth</span>
+        <span class="skill-item">JUnit</span>
+      </div>
+    </div>
+    <div class="skill-group reveal">
+      <div class="skill-group-title">Distributed Systems</div>
+      <div class="skill-items">
+        <span class="skill-item">Microservices</span>
+        <span class="skill-item">Apache Kafka</span>
+        <span class="skill-item">Event-Driven Architecture</span>
+        <span class="skill-item">Saga Pattern</span>
+        <span class="skill-item">Eureka Discovery</span>
+        <span class="skill-item">Circuit Breakers</span>
+        <span class="skill-item">Distributed Tracing</span>
+      </div>
+    </div>
+    <div class="skill-group reveal">
+      <div class="skill-group-title">Cloud &amp; AWS</div>
+      <div class="skill-items">
+        <span class="skill-item">Lambda</span>
+        <span class="skill-item">API Gateway</span>
+        <span class="skill-item">ECS Fargate</span>
+        <span class="skill-item">S3</span>
+        <span class="skill-item">EC2</span>
+        <span class="skill-item">DynamoDB</span>
+        <span class="skill-item">ECR</span>
+        <span class="skill-item">IAM</span>
+        <span class="skill-item">VPC</span>
+        <span class="skill-item">CloudWatch</span>
       </div>
     </div>
     <div class="skill-group reveal">
@@ -1114,17 +1163,7 @@ footer p {
         <span class="skill-item">MongoDB</span>
         <span class="skill-item">Redis</span>
         <span class="skill-item">Elasticsearch</span>
-      </div>
-    </div>
-    <div class="skill-group reveal">
-      <div class="skill-group-title">Tools & DevOps</div>
-      <div class="skill-items">
-        <span class="skill-item">Git</span>
-        <span class="skill-item">Docker</span>
-        <span class="skill-item">GitHub Actions</span>
-        <span class="skill-item">Swagger</span>
-        <span class="skill-item">Maven</span>
-        <span class="skill-item">Stripe API</span>
+        <span class="skill-item">DynamoDB</span>
       </div>
     </div>
     <div class="skill-group reveal">
@@ -1132,20 +1171,36 @@ footer p {
       <div class="skill-items">
         <span class="skill-item">React</span>
         <span class="skill-item">Redux Toolkit</span>
+        <span class="skill-item">Tailwind CSS</span>
         <span class="skill-item">Vite</span>
+        <span class="skill-item">React Router</span>
         <span class="skill-item">Recharts</span>
-        <span class="skill-item">HTML/CSS</span>
+        <span class="skill-item">Axios</span>
       </div>
     </div>
     <div class="skill-group reveal">
-      <div class="skill-group-title">Concepts</div>
+      <div class="skill-group-title">DevOps &amp; Tools</div>
       <div class="skill-items">
-        <span class="skill-item">Microservices</span>
-        <span class="skill-item">RBAC</span>
-        <span class="skill-item">MVC</span>
-        <span class="skill-item">CI/CD</span>
-        <span class="skill-item">Polyglot Persistence</span>
-        <span class="skill-item">Service Layer Pattern</span>
+        <span class="skill-item">Docker</span>
+        <span class="skill-item">Docker Compose</span>
+        <span class="skill-item">GitHub Actions</span>
+        <span class="skill-item">Nginx</span>
+        <span class="skill-item">Git</span>
+        <span class="skill-item">Stripe API</span>
+        <span class="skill-item">Linux/CLI</span>
+        <span class="skill-item">Postman</span>
+        <span class="skill-item">Maven</span>
+      </div>
+    </div>
+    <div class="skill-group reveal">
+      <div class="skill-group-title">AI Tools &amp; Practices</div>
+      <div class="skill-items">
+        <span class="skill-item">Claude Code</span>
+        <span class="skill-item">GitHub Copilot</span>
+        <span class="skill-item">Prompt Engineering</span>
+        <span class="skill-item">Agile Development</span>
+        <span class="skill-item">Code Reviews</span>
+        <span class="skill-item">Automated Testing</span>
       </div>
     </div>
   </div>
@@ -1160,7 +1215,7 @@ footer p {
       <div class="edu-degree">M.S. Computer Science</div>
       <div class="edu-school">Northeastern University — Khoury College</div>
       <div class="edu-meta">Boston, MA · Sep 2025 — Dec 2027 (Expected)</div>
-      <span class="edu-gpa">GPA: 3.7 / 4.0</span>
+      <span class="edu-gpa">GPA: 3.867 / 4.0</span>
     </div>
     <div class="edu-card reveal-right">
       <div class="edu-degree">B.E. Computer Science</div>
@@ -1198,7 +1253,7 @@ footer p {
 
 <!-- Footer -->
 <footer>
-  <p>Designed & Built by Thejesh Mundlapati &copy; 2026</p>
+  <p>Designed &amp; Built by Thejesh Mundlapati &copy; 2026</p>
 </footer>
 
 <script>
@@ -1275,7 +1330,6 @@ function animateRing() {
 }
 animateRing();
 
-// Hover effect on interactive elements
 document.querySelectorAll('a, button, .tech-tag, .skill-item, .timeline-tag').forEach(el => {
   el.addEventListener('mouseenter', () => ring.classList.add('hovering'));
   el.addEventListener('mouseleave', () => ring.classList.remove('hovering'));
